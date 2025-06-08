@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "dc756c07-dbd9-49e4-890b-e8af88db9a85",
+		"name": "CaseStudy 1 and 2 collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get crazy flight details - stubbed data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v2/crazy-api/flights?from=ATL&to=AMS&outboundDate=2025-06-20T00:00:00Z&inboundDate=2025-08-05T00:00:00Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v2",
+						"crazy-api",
+						"flights"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "ATL"
+						},
+						{
+							"key": "to",
+							"value": "AMS"
+						},
+						{
+							"key": "outboundDate",
+							"value": "2025-06-20T00:00:00Z"
+						},
+						{
+							"key": "inboundDate",
+							"value": "2025-08-05T00:00:00Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get filtered - Flight details - Both from DB and CrazySupplierData",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "TraceId",
+						"value": "3423423423423",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"airline\": \"a\",\r\n    \"departure\": \"ATL\",\r\n    \"destination\": \"AMS\",\r\n    \"departureDateTime\": \"2025-06-20T00:00:00Z\",\r\n    \"arrivalDateTime\": \"2025-08-05T00:00:00Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add New Flight entry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"airline\": \"Beta Airlines\",\r\n            \"supplier\": \"Airline supplier 2\",\r\n            \"price\": 300.0,\r\n            \"departure\": \"ATL\",\r\n            \"destination\": \"AMS\",\r\n            \"departureDateTime\":\"2025-08-01T19:07:00Z\",\r\n            \"arrivalDateTime\": \"2025-08-01T19:07:00Z\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/flight",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"flight"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add New Flight entry Copy",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"id\": 2,\r\n            \"airline\": \"Beta Airlines\",\r\n            \"supplier\": \"Airline supplier 2\",\r\n            \"price\": 300.0,\r\n            \"departure\": \"ATL\",\r\n            \"destination\": \"AMS\",\r\n            \"departureDateTime\":\"2025-08-01T19:07:00Z\",\r\n            \"arrivalDateTime\": \"2025-08-01T19:07:00Z\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/flight/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"flight",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteEntry",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"flightName\": \"Alpha Airlines\",\r\n            \"supplier\": \"Airline supplier 1\",\r\n            \"price\": 2000.0,\r\n            \"departure\": \"ATL\",\r\n            \"destination\": \"AMS\",\r\n            \"departureDate\":\"2025-08-01T19:07:00Z\",\r\n            \"arrivalDate\": \"2025-08-01T19:07:00Z\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/flight/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"flight",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
